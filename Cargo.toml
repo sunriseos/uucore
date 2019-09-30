@@ -21,7 +21,7 @@ failure = { version = "0.1.1", optional = true }
 failure_derive = { version = "0.1.1", optional = true }
 time = { version = "0.1.40", optional = true }
 data-encoding = { version = "^2.1", optional = true }
-libc = { version = "0.2.42", optional = true }
+libc = { version = "0.2.62", optional = true }
 wild = "2.0.1"
 nix = { version = "0.13", optional = true }
 lazy_static = { version = "1.3", optional = true }
@@ -44,3 +44,6 @@ zero-copy = ["nix", "libc", "lazy_static", "platform-info"]
 wide = []
 default = []
 
+[patch.crates-io.libc]
+git = "https://github.com/sunriseos/libc.git"
+branch = "sunrise-0.2.62"
