@@ -52,3 +52,29 @@ pub mod zero_copy;
 
 #[cfg(all(windows, feature = "wide"))]
 pub mod wide;
+
+#[cfg(target_os = "sunrise")]
+use std::os::sunrise::prelude::*;
+
+#[cfg(target_os = "sunrise")]
+capabilities!(CAPABILITIES = Capabilities {
+    svcs: [
+        nr::SleepThread,
+        nr::ExitProcess,
+        nr::CreateThread,
+        nr::StartThread,
+        nr::ExitThread,
+        nr::CloseHandle,
+        nr::WaitSynchronization,
+        nr::OutputDebugString,
+        nr::SetThreadArea,
+
+        nr::ConnectToNamedPort,
+        nr::SetHeapSize,
+        nr::SendSyncRequestWithUserBuffer,
+        nr::QueryMemory,
+        nr::CreateSharedMemory,
+        nr::MapSharedMemory,
+        nr::UnmapSharedMemory,
+    ]
+});
