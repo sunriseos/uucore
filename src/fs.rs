@@ -168,7 +168,7 @@ pub fn is_stdin_interactive() -> bool {
     unsafe { libc::isatty(libc::STDIN_FILENO) == 1 }
 }
 
-#[cfg(windows)]
+#[cfg(any(windows, target_os = "sunrise"))]
 pub fn is_stdin_interactive() -> bool {
     false
 }
