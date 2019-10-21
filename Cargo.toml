@@ -17,8 +17,8 @@ appveyor = { repository = "uutils/uucore" }
 
 [dependencies]
 getopts = "0.2.18"
-failure = { version = "0.1.1", optional = true }
-failure_derive = { version = "0.1.1", optional = true }
+failure = { version = "0.1.1", optional = true, default-features = false }
+failure_derive = { version = "0.1.1", optional = true, default-features = false }
 time = { version = "0.1.40", optional = true }
 data-encoding = { version = "^2.1", optional = true }
 libc = { version = "0.2.62", optional = true }
