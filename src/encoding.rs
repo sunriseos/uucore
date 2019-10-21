@@ -7,16 +7,28 @@
 //
 
 extern crate data_encoding;
+
+use failure::Fail;
 use self::data_encoding::{DecodeError, BASE32, BASE64};
 use std::io::{self, Read, Write};
 
-#[derive(Fail, Debug)]
+#[derive(Debug)]
 pub enum EncodingError {
-    #[fail(display = "{}", _0)]
-    Decode(#[cause] DecodeError),
-    #[fail(display = "{}", _0)]
-    Io(#[cause] io::Error),
+    Decode(DecodeError),
+    Io(io::Error),
 }
+
+
+impl std::fmt::Display for EncodingError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            EncodingError::Decode(error) => write!(f, "{}", error),
+            EncodingError::Io(error) => write!(f, "{}", error),
+        }
+    }
+}
+
+impl Fail for EncodingError {}
 
 impl From<io::Error> for EncodingError {
     fn from(err: io::Error) -> EncodingError {

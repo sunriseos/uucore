@@ -10,9 +10,6 @@ pub extern crate libc;
 pub extern crate winapi;
 #[cfg(feature = "failure")]
 extern crate failure;
-#[cfg(feature = "failure_derive")]
-#[macro_use]
-extern crate failure_derive;
 #[cfg(feature = "nix")]
 extern crate nix;
 #[cfg(all(feature = "lazy_static", target_os = "linux"))]
